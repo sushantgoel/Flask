@@ -1,7 +1,6 @@
-from flask import Flask, url_for, request, render_template;
+﻿from flask import Flask, url_for, request, render_template;
 from app import app;
 import redis;
-
 
 #Connect to redis data store
 r = redis.StrictRedis(host='flaskmva.redis.cache.windows.net',port=6380,ssl=True,db=0, charset="utf-8", decode_responses=True, password='kxmLxHPfw5Xx8piaTlyv5VrPBBkKMoNTG6TNta+Pd5I=');

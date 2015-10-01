@@ -1,4 +1,4 @@
-"""
+﻿"""
 This script runs the application using a development server.
 It contains the definition of routes and views for the application.
 """
@@ -11,6 +11,8 @@ wsgi_app = app.wsgi_app
 # END DO NOT TOUCH!!!
 
 #Our code :-)
+
+
 
 # Import all of our routes from routes.py
 from routes import *;
