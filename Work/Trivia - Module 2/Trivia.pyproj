@@ -35,6 +35,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="requirements.txt" />
+    <Content Include="templates\AnswerQuestions.html" />
     <Content Include="templates\Correct.html" />
     <Content Include="templates\CreatedQuestion.html" />
     <Content Include="templates\CreateQuestion.html" />

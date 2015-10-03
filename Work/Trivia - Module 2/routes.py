@@ -2,25 +2,19 @@
 from app import app
 import redis
 
+#connect to Redis
+r = redis.StrictRedis('localhost',port=6379,db=0,charset="utf-8",decode_responses=True)
+
 @app.route('/')
 def hello():
-    #connect to Redis
-    r = redis.StrictRedis('localhost',port=6379,db=0)
-    return '''<html>
-                <head>
-                    <title>Hello, world</title>
-                </head>
-                <body>
-                    <h1>Hello, world</h1>
-                </body>
-            </html>''';
+    return '<a href="/create">Create a question</a>';
 
 
 @app.route('/create', methods=['GET','POST'])
 def create():
     if request.method == 'GET':
         #send the user the form
-        return render_template('Template/CreateQuestion.html')
+        return render_template('CreateQuestion.html')
     elif request.method == 'POST':
         #read the form data and save it
         title = request.form['title']
@@ -28,6 +22,9 @@ def create():
         answer = request.form['answer']
 
         #Store data in database
+        #Key name will be the title they type in :question
+        r.set(title + ':question', question)
+        r.set(title + ':answer',answer)
         return render_template('CreatedQuestion.html', question = question)
     else:
         return '<h2>Invalid request</h2>'
@@ -36,18 +33,18 @@ def create():
 @app.route('/question/<title>', methods=['GET','POST'])
 def question(title):
     if request.method == 'GET':
-        #send the user the form
-        question = 'Question here.'
+        #send the user the form        
         #Read question from Database
-        return render_template('AnswerQuestion.html',question = question)
+        question = r.get(title+':question')
+        return render_template('AnswerQuestions.html',question = question)
     elif request.method == 'POST':
         #User has attempted answer. Check if they're correct
         submittedAnswer = request.form['submittedAnswer']
         #Read answer from DB
-        answer = 'Answer'
+        answer = r.get(title + ':answer')
         if submittedAnswer == answer:
             return render_template('Correct.html')
         else:
-            return render_template('Incorrect.html',submittedAnswer = submittedAnswer,answer=answer)
+            return render_template('Incorrect.html',submittedAnswer = submittedAnswer,answer = answer)
     else:
         return '<h2>Invalid request</h2>'
