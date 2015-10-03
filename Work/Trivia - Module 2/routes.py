@@ -1,23 +1,7 @@
-﻿from flask import Flask, url_for
+﻿from flask import Flask, url_for, request, render_template
 from app import app
 
-#@app.route('/')
-#def hello():
-#    url = url_for('about');
-#    link = '<a href="' + url + '">About us!</a>';
-#    return link;
-
-#@app.route('/about')
-#def about():
-#    return 'We are the knights who say Ni!!';
-
-@app.route('/question/<title>')
-def question(title):
-    message = '<h2> You said ' + title + '</h2>';
-    return message;
-
 @app.route('/')
-
 def hello():
     return '''<html>
                 <head>
@@ -28,6 +12,39 @@ def hello():
                 </body>
             </html>''';
 
-@app.route('/Create')
+
+@app.route('/Create', methods = ['GET','POST'])
 def create():
-    return '<h2>This is the create page</h2>'
+    if request.method == 'GET':
+        #send the user the form
+        return render_template('CreateQuestion.html')
+    elif request.method == 'POST':
+        #read the form data and save it
+        title = request.form['title']
+        question = request.form['question']
+        answer = request.form['answer']
+
+        #Store data in database
+        return render_template('CreatedQuestion.html', question = question)
+    else:
+        return '<h2>Invalid request</h2>'
+
+
+@app.route('/question/<title>', methods=['GET','POST'])
+def question(title):
+    if request.method == 'GET':
+        #send the user the form
+        question = 'Question here.'
+        #Read question from Database
+        return render_template('AnswerQuestion.html',question = question)
+    elif request.method == 'POST':
+        #User has attempted answer. Check if they're correct
+        submittedAnswer = request.form['submittedAnswer']
+        #Read answer from DB
+        answer = 'Answer'
+        if submittedAnswer == answer:
+            return render_template('Correct.html')
+        else:
+            return render_template('Incorrect.html',submittedAnswer = submittedAnswer,answer=answer)
+    else:
+        return '<h2>Invalid request</h2>'

@@ -35,6 +35,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="requirements.txt" />
+    <Content Include="Template\AnswerQuestion.html" />
+    <Content Include="Template\Correct.html" />
+    <Content Include="Template\CreatedQuestion.html" />
+    <Content Include="Template\CreateQuestion.html" />
+    <Content Include="Template\Incorrect.html" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">
@@ -48,6 +53,9 @@
       <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
       <Architecture>X86</Architecture>
     </Interpreter>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Template\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />
   <!-- Specify pre- and post-build commands in the BeforeBuild and 
