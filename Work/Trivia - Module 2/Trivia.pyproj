@@ -7,7 +7,7 @@
     <ProjectGuid>61eb5bf5-eadd-4542-8bb4-461ae71333b3</ProjectGuid>
     <ProjectHome>.</ProjectHome>
     <ProjectTypeGuids>{789894c7-04a9-4a11-a6b5-3f4435165112};{1b580a1a-fdb3-4b32-83e1-6407eb2722e6};{349c5851-65df-11da-9384-00065b846f21};{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
-    <StartupFile>app.py</StartupFile>
+    <StartupFile>runserver.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -28,8 +28,11 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="app.py" />
-    <Compile Include="routes.py">
+    <Compile Include="runserver.py" />
+    <Compile Include="TriviaMVAApp\views.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TriviaMVAApp\__init__.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -55,6 +58,7 @@
     </Interpreter>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="TriviaMVAApp\" />
     <Folder Include="templates\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />

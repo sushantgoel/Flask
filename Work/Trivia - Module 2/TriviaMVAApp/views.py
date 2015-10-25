@@ -1,5 +1,5 @@
 ﻿from flask import Flask, url_for, request, render_template
-from app import app
+from TriviaMVAApp import app
 import redis
 
 #connect to Redis
