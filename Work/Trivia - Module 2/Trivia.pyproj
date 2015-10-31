@@ -29,6 +29,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="runserver.py" />
+    <Compile Include="TriviaMVAApp\models\redisclient.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TriviaMVAApp\models\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="TriviaMVAApp\views.py">
       <SubType>Code</SubType>
     </Compile>
@@ -38,11 +44,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="requirements.txt" />
-    <Content Include="templates\AnswerQuestions.html" />
-    <Content Include="templates\Correct.html" />
-    <Content Include="templates\CreatedQuestion.html" />
-    <Content Include="templates\CreateQuestion.html" />
-    <Content Include="templates\Incorrect.html" />
+    <Content Include="TriviaMVAApp\templates\AnswerQuestions.html" />
+    <Content Include="TriviaMVAApp\templates\Correct.html" />
+    <Content Include="TriviaMVAApp\templates\CreatedQuestion.html" />
+    <Content Include="TriviaMVAApp\templates\CreateQuestion.html" />
+    <Content Include="TriviaMVAApp\templates\Incorrect.html" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">
@@ -59,7 +65,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="TriviaMVAApp\" />
-    <Folder Include="templates\" />
+    <Folder Include="TriviaMVAApp\models\" />
+    <Folder Include="TriviaMVAApp\templates\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />
   <!-- Specify pre- and post-build commands in the BeforeBuild and 

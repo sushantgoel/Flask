@@ -1,9 +1,8 @@
 ﻿from flask import Flask, url_for, request, render_template
 from TriviaMVAApp import app
-import redis
+from TriviaMVAApp.models.redisclient import Client
 
-#connect to Redis
-r = redis.StrictRedis('localhost',port=6379,db=0,charset="utf-8",decode_responses=True)
+
 
 @app.route('/')
 def hello():
@@ -21,10 +20,9 @@ def create():
         question = request.form['question']
         answer = request.form['answer']
 
-        #Store data in database
-        #Key name will be the title they type in :question
-        r.set(title + ':question', question)
-        r.set(title + ':answer',answer)
+        client = Client()
+        client.saveQuestion(title,question,answer)
+        
         return render_template('CreatedQuestion.html', question = question)
     else:
         return '<h2>Invalid request</h2>'
@@ -33,15 +31,16 @@ def create():
 @app.route('/question/<title>', methods=['GET','POST'])
 def question(title):
     if request.method == 'GET':
-        #send the user the form        
-        #Read question from Database
-        question = r.get(title+':question')
+        client = Client()
+        question = client.getQuestion(title);
+        
         return render_template('AnswerQuestions.html',question = question)
     elif request.method == 'POST':
         #User has attempted answer. Check if they're correct
         submittedAnswer = request.form['submittedAnswer']
-        #Read answer from DB
-        answer = r.get(title + ':answer')
+        client = Client()
+        answer = client.getAnswer(title)
+        
         if submittedAnswer == answer:
             return render_template('Correct.html')
         else:
