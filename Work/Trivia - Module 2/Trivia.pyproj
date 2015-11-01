@@ -32,6 +32,9 @@
     <Compile Include="TriviaMVAApp\models\redisclient.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="TriviaMVAApp\models\sqlclient.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="TriviaMVAApp\models\__init__.py">
       <SubType>Code</SubType>
     </Compile>
