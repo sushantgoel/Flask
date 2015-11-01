@@ -1,12 +1,6 @@
-﻿<!DOCTYPE html>
+﻿{% extends "layout.html" %}
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <title>Thank you for your submission</title>
-</head>
-<body>
+{% block main %}
     <h2>Thank you for your Question</h2>
     <div>You asked: {{ question }}</div>
-</body>
-</html>
+{% endblock %}

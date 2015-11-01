@@ -47,11 +47,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="requirements.txt" />
+    <Content Include="TriviaMVAApp\static\css\bootstrap-theme.css" />
+    <Content Include="TriviaMVAApp\static\css\bootstrap-theme.css.map" />
+    <Content Include="TriviaMVAApp\static\css\bootstrap-theme.min.css" />
+    <Content Include="TriviaMVAApp\static\css\bootstrap.css" />
+    <Content Include="TriviaMVAApp\static\css\bootstrap.css.map" />
+    <Content Include="TriviaMVAApp\static\css\bootstrap.min.css" />
+    <Content Include="TriviaMVAApp\static\js\bootstrap.js" />
+    <Content Include="TriviaMVAApp\static\js\bootstrap.min.js" />
+    <Content Include="TriviaMVAApp\static\js\npm.js" />
     <Content Include="TriviaMVAApp\templates\AnswerQuestions.html" />
     <Content Include="TriviaMVAApp\templates\Correct.html" />
     <Content Include="TriviaMVAApp\templates\CreatedQuestion.html" />
     <Content Include="TriviaMVAApp\templates\CreateQuestion.html" />
     <Content Include="TriviaMVAApp\templates\Incorrect.html" />
+    <Content Include="TriviaMVAApp\templates\Layout.html" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">
@@ -69,6 +79,9 @@
   <ItemGroup>
     <Folder Include="TriviaMVAApp\" />
     <Folder Include="TriviaMVAApp\models\" />
+    <Folder Include="TriviaMVAApp\static\" />
+    <Folder Include="TriviaMVAApp\static\css\" />
+    <Folder Include="TriviaMVAApp\static\js\" />
     <Folder Include="TriviaMVAApp\templates\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />
